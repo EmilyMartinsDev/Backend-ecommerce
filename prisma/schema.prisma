@@ -40,6 +40,9 @@ model Product{
   name String
   price String
   description String
+  lancamento Boolean? @default(false)
+   destaque Boolean? @default(false)
+   promocao Boolean? @default(false)
   banner String
   createdAt DateTime? @default(now())
   updatedAt DateTime? @default(now())
@@ -62,7 +65,7 @@ model Item{
   card Card @relation(fields: [card_id], references: [id])
   card_id String
 
-  product Product @relation(fields: [product_id], references: [id])
+  product Product @relation(fields: [product_id], references: [id], onDelete: Cascade, onUpdate: Cascade)
   product_id String @unique
 
   @@map("items")

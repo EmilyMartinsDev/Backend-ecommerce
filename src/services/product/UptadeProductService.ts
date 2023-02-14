@@ -1,50 +1,43 @@
 import prismaClient from "../../prisma";
 
-interface CreateProductRequest{
 
+interface UpdateProductRequest{
     name: string;
-    price: string ;
+    price: string;
     description: string;
+    product_id: string;
     banner: string;
-    category_id: string;
     promocao: boolean;
     lancamento: boolean;
     destaque: boolean;
 }
 
-class CreateProductService{
-    async execute({
-        name,
-        price,
-        description,
-        banner,
-        promocao,
-        lancamento,
-        destaque,
-        category_id,
-    }: CreateProductRequest){
+
+class UpdateProductService{
+    async execute({name, price, description, product_id, banner, lancamento, promocao, destaque  }: UpdateProductRequest){
 
         if(!name || !price || !description || !banner){
             throw new Error("erro : campos inválidos")
         }
 
-        const product = await prismaClient.product.create({
+        const updatedProduct = await prismaClient.product.update({
+            where:{
+                id: product_id
+            },
             data:{
-
                 name: name,
                 price: price,
                 description: description,
                 banner: banner,
-                category_id: category_id,
                 promocao: promocao,
                 lancamento: lancamento,
                 destaque: destaque,
             }
         });
 
-        return product
+        return updatedProduct
+
     }
 }
 
-export { CreateProductService }
-
+export { UpdateProductService }

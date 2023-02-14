@@ -19,6 +19,8 @@ import { ListCategoryController } from './controllers/category/ListCategoryContr
 import { CreateProductController } from './controllers/product/CreateProductController';
 import { ListProductByCategoryController } from './controllers/product/ListProductByCategoryController';
 import { DatailProductController } from './controllers/product/DatailProductController';
+import { UptadeProductController } from './controllers/product/UptadeProductController';
+import { DeleteProductController } from './controllers/product/DeleteProductController';
 
 //imports card
 import { CreateCardController } from './controllers/card/CreateCardController';
@@ -39,10 +41,12 @@ const router = Router();
 
 //rotas category
     router.post('/category', isAuthenticated, isAdmin, new CreateCategoryController().handle);
-    router.get('/category', isAuthenticated, isAdmin, new ListCategoryController().handle);
-
+    router.get('/category', isAuthenticated,  new ListCategoryController().handle);
+     
 // Rotas Produtos    
     router.post('/product', isAuthenticated, isAdmin, upload.single('file'),  new CreateProductController().handle);
+    router.put('/product', isAuthenticated, isAdmin,upload.single('file'), new UptadeProductController().handle);
+    router.delete('/product/delete', isAuthenticated, isAdmin, new DeleteProductController().handle);
     router.get('/category/product', isAuthenticated, new ListProductByCategoryController().handle);
     router.get('/category/product/datail', isAuthenticated, new DatailProductController().handle );
 
