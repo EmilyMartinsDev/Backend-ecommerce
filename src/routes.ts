@@ -21,6 +21,11 @@ import { ListProductByCategoryController } from './controllers/product/ListProdu
 import { DatailProductController } from './controllers/product/DatailProductController';
 import { UptadeProductController } from './controllers/product/UptadeProductController';
 import { DeleteProductController } from './controllers/product/DeleteProductController';
+import { ListProductLancamentoController } from './controllers/product/ListProductLancamentoController';
+import { ListProductDestaqueController } from './controllers/product/ListProductDestaqueController';
+import { ListProductPromocaoController } from './controllers/product/ListProductPromocaoController';
+
+
 
 //imports card
 import { CreateCardController } from './controllers/card/CreateCardController';
@@ -47,6 +52,10 @@ const router = Router();
     router.post('/product', isAuthenticated, isAdmin, upload.single('file'),  new CreateProductController().handle);
     router.put('/product', isAuthenticated, isAdmin,upload.single('file'), new UptadeProductController().handle);
     router.delete('/product/delete', isAuthenticated, isAdmin, new DeleteProductController().handle);
+
+    router.get('/product/promocao', new ListProductPromocaoController().handle)
+    router.get('/product/destaque', new ListProductDestaqueController().handle)
+    router.get('/product/lancamento', new ListProductLancamentoController().handle )
     router.get('/category/product', isAuthenticated, new ListProductByCategoryController().handle);
     router.get('/category/product/datail', isAuthenticated, new DatailProductController().handle );
 
