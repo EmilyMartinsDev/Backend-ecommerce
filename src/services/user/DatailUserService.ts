@@ -15,7 +15,8 @@ class DatailUserService{
                 name: true,
                 email: true,
                 isAdmin: true,
-            }
+                card: true,
+            },
             
         });
 

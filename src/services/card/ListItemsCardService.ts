@@ -12,6 +12,10 @@ class ListItemsCardService{
         const itemsCard = await prismaClient.item.findMany({
             where:{
                 card_id: card?.id
+            },
+            include:{
+                product: true,
+                
             }
         });
 

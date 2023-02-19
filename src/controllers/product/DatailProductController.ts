@@ -4,7 +4,7 @@ import { DatailProductService } from "../../services/product/DatailProductServic
 class DatailProductController{
     async handle(req: Request, res:Response){
 
-        const product_id = req.query.product_id as string;
+        const product_id = req.params.product_id as string;
 
         const datailProductService = new DatailProductService();
         const product = await datailProductService.execute({

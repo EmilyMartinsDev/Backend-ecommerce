@@ -40,13 +40,13 @@ const upload = multer(uploadConfig.upload('./tmp'));
 const router = Router();
 
 // rotas user
-    router.post('/users', new CreateUserController().handle);
+    router.post('/register', new CreateUserController().handle);
     router.post('/session', new AuthUserController().handle);
     router.get('/me', isAuthenticated, new DatailUserController().handle);
 
 //rotas category
     router.post('/category', isAuthenticated, isAdmin, new CreateCategoryController().handle);
-    router.get('/category', isAuthenticated,  new ListCategoryController().handle);
+    router.get('/category',  new ListCategoryController().handle);
      
 // Rotas Produtos    
     router.post('/product', isAuthenticated, isAdmin, upload.single('file'),  new CreateProductController().handle);
@@ -57,12 +57,12 @@ const router = Router();
     router.get('/product/destaque', new ListProductDestaqueController().handle)
     router.get('/product/lancamento', new ListProductLancamentoController().handle )
     router.get('/category/product', isAuthenticated, new ListProductByCategoryController().handle);
-    router.get('/category/product/datail', isAuthenticated, new DatailProductController().handle );
+    router.get('/category/product/datail/:product_id', new DatailProductController().handle );
 
 // Rotas card
     router.post('/card', isAuthenticated, new CreateCardController().handle)
-    router.post('/card/item', isAuthenticated, new CreateCardItemController().handle );
-    router.delete('/card/item', isAuthenticated, new DeleteCardItemController().handle);
+    router.post('/card/item/:product_id', isAuthenticated, new CreateCardItemController().handle );
+    router.delete('/card/item/:item_id', isAuthenticated, new DeleteCardItemController().handle);
     router.get('/card', isAuthenticated, new ListCardItemController().handle );
     router.put('/card/finish', isAuthenticated, new FinishCardController().handle);
 

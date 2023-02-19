@@ -3,8 +3,9 @@ import { CreateProductService } from '../../services/product/CreateProductServic
 
 class CreateProductController{
     async handle(req:Request, res:Response){
+        
 
-        const {name, price, description, category_id, lancamento, destaque, promocao} = req.body;
+        const {name, price, description, category_id, lancamento, destaque, promocao,cor, tamanho} = req.body;
 
         if(!req.file){
             throw new Error(" error to upload ");
@@ -14,7 +15,7 @@ class CreateProductController{
 
         const  createProductService = new CreateProductService();
         const product = await createProductService.execute({
-            name, price, description, category_id, banner, lancamento, destaque, promocao
+            name, price, description, category_id, banner, lancamento, destaque, promocao, cor, tamanho
         });
 
         return res.json(product);

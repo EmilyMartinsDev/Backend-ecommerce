@@ -34,6 +34,10 @@ class CreateUserService{
             name: name,
             email: email,
             password: passwordSecret
+           },
+
+           include:{
+            card: true
            }
         });
 

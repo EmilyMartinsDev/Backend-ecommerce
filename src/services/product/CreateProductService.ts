@@ -10,6 +10,8 @@ interface CreateProductRequest{
     promocao: boolean;
     lancamento: boolean;
     destaque: boolean;
+    cor: string;
+    tamanho: string;
 }
 
 class CreateProductService{
@@ -22,6 +24,8 @@ class CreateProductService{
         lancamento,
         destaque,
         category_id,
+        cor,
+        tamanho
     }: CreateProductRequest){
 
         if(!name || !price || !description || !banner){
@@ -39,6 +43,8 @@ class CreateProductService{
                 promocao: promocao,
                 lancamento: lancamento,
                 destaque: destaque,
+                cor: cor,
+                tamanho: tamanho
             }
         });
 

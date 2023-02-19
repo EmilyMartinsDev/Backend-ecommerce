@@ -44,6 +44,8 @@ model Product{
    destaque Boolean? @default(false)
    promocao Boolean? @default(false)
   banner String
+  cor String
+  tamanho String
   createdAt DateTime? @default(now())
   updatedAt DateTime? @default(now())
 
@@ -59,6 +61,8 @@ model Product{
 model Item{
   id String @id @default(uuid())
   amount Int
+  color String?
+  size String?
   createdAt DateTime? @default(now())
   updatedAt DateTime? @default(now())
 

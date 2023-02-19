@@ -5,24 +5,29 @@ interface CreateCardItemRequest{
     user_id: string;
     amount: number;
     product_id: string;
+    size: string;
+    color: string;
+    card_id:  CardId
+}
+
+interface CardId{
+    id: string;
+    status: boolean;
+    user_id: string;
 }
 
 class CreateCardItemService{
-    async execute({user_id, amount, product_id}: CreateCardItemRequest){
+    async execute({ amount, product_id, size, color, card_id}: CreateCardItemRequest){
         
-        const card = await prismaClient.card.findFirst({
-            where: {
-                user_id: user_id
-            }
-        });
 
-        const card_id = card?.id;
 
         const cardItem = await prismaClient.item.create({
             data:{
                 amount: amount,
                 product_id: product_id,
-                card_id: card_id
+                color: color,
+                size: size,
+                card_id: card_id.id
             },
             include:{
                 product: true
