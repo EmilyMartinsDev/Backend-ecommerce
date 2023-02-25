@@ -5,7 +5,16 @@ class ListProductDestaqueService{
 
         const produtoDestaque = await prismaClient.product.findMany({
             where:{
-                destaque: true
+                destaque: 'active'
+            },
+            select:{
+                id: true,
+                name: true,
+                price: true,
+                description: true,
+                lancamento: true,
+                banner: true,
+                category_id: true
             }
         });
 

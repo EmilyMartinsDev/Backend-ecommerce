@@ -40,9 +40,9 @@ model Product{
   name String
   price String
   description String
-  lancamento Boolean? @default(false)
-   destaque Boolean? @default(false)
-   promocao Boolean? @default(false)
+  lancamento String? 
+   destaque String? 
+   promocao String? 
   banner String
   cor String
   tamanho String

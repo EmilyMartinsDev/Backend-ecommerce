@@ -7,9 +7,9 @@ interface CreateProductRequest{
     description: string;
     banner: string;
     category_id: string;
-    promocao: boolean;
-    lancamento: boolean;
-    destaque: boolean;
+    promocao: string;
+    lancamento: string;
+    destaque: string;
     cor: string;
     tamanho: string;
 }

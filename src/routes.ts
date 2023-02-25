@@ -50,13 +50,13 @@ const router = Router();
      
 // Rotas Produtos    
     router.post('/product', isAuthenticated, isAdmin, upload.single('file'),  new CreateProductController().handle);
-    router.put('/product', isAuthenticated, isAdmin,upload.single('file'), new UptadeProductController().handle);
-    router.delete('/product/delete', isAuthenticated, isAdmin, new DeleteProductController().handle);
+    router.put('/product/:product_id', isAuthenticated, isAdmin,upload.single('file'), new UptadeProductController().handle);
+    router.delete('/product/delete/:product_id', isAuthenticated, isAdmin, new DeleteProductController().handle);
 
     router.get('/product/promocao', new ListProductPromocaoController().handle)
     router.get('/product/destaque', new ListProductDestaqueController().handle)
     router.get('/product/lancamento', new ListProductLancamentoController().handle )
-    router.get('/category/product', isAuthenticated, new ListProductByCategoryController().handle);
+    router.get('/category/product/:category_id', new ListProductByCategoryController().handle);
     router.get('/category/product/datail/:product_id', new DatailProductController().handle );
 
 // Rotas card

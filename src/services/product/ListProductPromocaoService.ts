@@ -5,7 +5,15 @@ class ListProductPromocaoService{
 
         const produtoPromocao = await prismaClient.product.findMany({
             where:{
-                promocao: true
+                promocao: 'active'
+            }, select:{
+                id: true,
+                name: true,
+                price: true,
+                description: true,
+                lancamento: true,
+                banner: true,
+                category_id: true
             }
         });
 

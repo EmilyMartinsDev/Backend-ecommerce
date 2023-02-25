@@ -7,14 +7,17 @@ interface UpdateProductRequest{
     description: string;
     product_id: string;
     banner: string;
-    promocao: boolean;
-    lancamento: boolean;
-    destaque: boolean;
+    promocao: string;
+    lancamento: string;
+    destaque:  string;
+    category_id: string;
+    tamanho: string;
+    cor: string;
 }
 
 
 class UpdateProductService{
-    async execute({name, price, description, product_id, banner, lancamento, promocao, destaque  }: UpdateProductRequest){
+    async execute({name, price, description, product_id, banner, lancamento, promocao, destaque, category_id, tamanho, cor  }: UpdateProductRequest){
 
         if(!name || !price || !description || !banner){
             throw new Error("erro : campos inválidos")
@@ -32,7 +35,11 @@ class UpdateProductService{
                 promocao: promocao,
                 lancamento: lancamento,
                 destaque: destaque,
-            }
+                category_id: category_id,
+                tamanho: tamanho,
+                cor: cor
+
+            }   
         });
 
         return updatedProduct

@@ -5,7 +5,7 @@ class ListProductLancamentoService{
 
         const produtoLancamento = await prismaClient.product.findMany({
             where:{
-                lancamento: true
+                lancamento: 'active'
             },
             select:{
                 id: true,
